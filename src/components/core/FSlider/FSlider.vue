@@ -29,6 +29,11 @@
                 </slot>
             </template>
         </f-input>
+        <div v-if="useTooltip" class="f-slider_tooltip">
+            <div ref="tooltip">
+                <span>{{ val }}</span>
+            </div>
+        </div>
     </div>
 </template>
 
@@ -86,6 +91,10 @@ export default {
         },
         /** Use fill bar from thumb to right corner. */
         useUpperFillBar: {
+            type: Boolean,
+            default: false,
+        },
+        useTooltip: {
             type: Boolean,
             default: false,
         },
@@ -163,6 +172,10 @@ export default {
 
                 // Set slider value in percentage to css custom property
                 inputStyle.setProperty('--f-slider-value', sliderValue);
+
+                if (this.$refs.tooltip) {
+                    this.$refs.tooltip.style.setProperty('--f-slider-value', sliderValue);
+                }
             }
         },
 

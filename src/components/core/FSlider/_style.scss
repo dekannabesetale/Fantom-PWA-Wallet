@@ -1,4 +1,4 @@
-@import "custom-properties";
+@import 'custom-properties';
 
 @mixin f-slider-thumb() {
     //position: relative;
@@ -30,6 +30,7 @@
 }
 
 .f-slider {
+    position: relative;
     width: 100%;
     display: inline-block;
     vertical-align: middle;
@@ -42,7 +43,7 @@
             background: var(--f-slider-track-color);
             border-radius: var(--f-slider-border-radius);
 
-            input[type="range"] {
+            input[type='range'] {
                 -webkit-appearance: none;
                 //outline: none;
 
@@ -85,16 +86,54 @@
     }
 
     &:hover {
-        .f-input .f-inp input[type="range"]::-webkit-slider-thumb {
+        .f-input .f-inp input[type='range']::-webkit-slider-thumb {
             @include f-slider-thumb-hover;
         }
 
-        .f-input .f-inp input[type="range"]::-moz-range-thumb {
+        .f-input .f-inp input[type='range']::-moz-range-thumb {
             @include f-slider-thumb-hover;
         }
 
-        .f-input .f-inp input[type="range"]::-ms-thumb {
+        .f-input .f-inp input[type='range']::-ms-thumb {
             @include f-slider-thumb-hover;
+        }
+    }
+
+    &_tooltip {
+        position: absolute;
+        width: calc(100% - var(--f-slider-thumb-width));
+        height: var(--f-slider-tooltip-height);
+        bottom: 0;
+        left: calc(var(--f-slider-thumb-width) * 0.5);
+        font-size: 0.9em;
+
+        > div {
+            position: absolute;
+            width: 40px;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 4px;
+            top: 0;
+            left: calc(var(--f-slider-value) * 1%);
+            transform: translateX(-50%) translateY(var(--f-slider-tooltip-position-top));
+            background-color: var(--f-slider-fill-bar-background-color);
+            border-radius: var(--f-slider-tooltip-border-radius);
+
+            span {
+                overflow: hidden;
+            }
+
+            &::before {
+                position: absolute;
+                top: calc(-1 * var(--f-slider-tooltip-arrow-size));
+                content: '';
+                border-style: solid;
+                border-width: 0 var(--f-slider-tooltip-arrow-size) var(--f-slider-tooltip-arrow-size)
+                    var(--f-slider-tooltip-arrow-size);
+                border-color: transparent transparent var(--f-slider-fill-bar-background-color) transparent;
+            }
         }
     }
 
@@ -128,7 +167,8 @@
     }
 }
 
-html[dir="rtl"], body[dir="rtl"] {
+html[dir='rtl'],
+body[dir='rtl'] {
     .f-slider {
         &.use-upper-fill-bar {
             .f-input .f-inp::after {
