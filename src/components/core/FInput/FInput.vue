@@ -38,6 +38,7 @@
             </template>
             <slot name="suffix"></slot>
         </span>
+        <div v-if="showCharsCounter" class="f-input_charscounter">{{ numChars }}/{{ maxlength }}</div>
         <slot name="bottom" v-bind="slotProps"></slot>
     </span>
 </template>
@@ -89,6 +90,10 @@ export default {
             type: Boolean,
             default: false,
         },
+        showCharsCounter: {
+            type: Boolean,
+            default: false,
+        },
     },
 
     data() {
@@ -99,6 +104,7 @@ export default {
             errmsgslot: 'suffix',
             ariaDescribedBy: null,
             inputId: `${this.id}-f-inp`,
+            numChars: 0,
         };
     },
 
@@ -165,6 +171,12 @@ export default {
         isInvalid() {
             this.setAriaDescribedBy();
         },
+    },
+
+    created() {
+        if (this.showCharsCounter && !this.maxlength) {
+            throw new Error(`'maxlength' has to be set if 'showCharsCounter' is set`);
+        }
     },
 
     mounted() {
@@ -267,6 +279,10 @@ export default {
 
             if (this.validateOnInput) {
                 this.validate();
+            }
+
+            if (this.showCharsCounter) {
+                this.numChars = this.val.length;
             }
         },
 

@@ -62,4 +62,9 @@
             }
         }
     }
+
+    &_charscounter {
+        text-align: end;
+        color: $light-gray-color;
+    }
 }
