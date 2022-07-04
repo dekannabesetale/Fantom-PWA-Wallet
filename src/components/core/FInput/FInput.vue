@@ -37,8 +37,8 @@
                 />
             </template>
             <slot name="suffix"></slot>
+            <span v-if="showCharsCounter" class="f-input_charscounter">{{ numChars }}/{{ maxlength }}</span>
         </span>
-        <div v-if="showCharsCounter" class="f-input_charscounter">{{ numChars }}/{{ maxlength }}</div>
         <slot name="bottom" v-bind="slotProps"></slot>
     </span>
 </template>

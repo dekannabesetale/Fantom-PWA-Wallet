@@ -5,6 +5,7 @@
     vertical-align: middle;
 
     .f-inp {
+        position: relative;
         display: flex;
         align-items: center;
         align-content: center;
@@ -64,7 +65,10 @@
     }
 
     &_charscounter {
-        text-align: end;
+        position: absolute;
+        bottom: -24px;
+        right: 0;
+        //text-align: end;
         color: $light-gray-color;
     }
 }
