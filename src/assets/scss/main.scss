@@ -399,6 +399,16 @@ input.no-style {
     }
 }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
 @include media-max($bp-small) {
     .narrow-container {
         padding-top: 8px;
