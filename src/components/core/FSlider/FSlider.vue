@@ -31,7 +31,9 @@
         </f-input>
         <div v-if="useTooltip" class="f-slider_tooltip">
             <div ref="tooltip">
-                <span>{{ val }}</span>
+                <span>
+                    <slot name="tooltip-value" v-bind="{ value: val }">{{ val }}</slot>
+                </span>
             </div>
         </div>
     </div>

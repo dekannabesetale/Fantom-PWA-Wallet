@@ -105,7 +105,7 @@
         height: var(--f-slider-tooltip-height);
         bottom: 0;
         left: calc(var(--f-slider-thumb-width) * 0.5);
-        font-size: 0.9em;
+        font-size: 0.85em;
 
         > div {
             position: absolute;
@@ -120,6 +120,7 @@
             transform: translateX(-50%) translateY(var(--f-slider-tooltip-position-top));
             background-color: var(--f-slider-fill-bar-background-color);
             border-radius: var(--f-slider-tooltip-border-radius);
+            z-index: 3;
 
             span {
                 overflow: hidden;
@@ -138,6 +139,8 @@
     }
 
     .labels {
+        position: relative;
+        z-index: 2;
         width: 100%;
         //overflow: hidden;
         //height: 20px;
