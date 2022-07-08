@@ -118,7 +118,8 @@
             top: 0;
             left: calc(var(--f-slider-value) * 1%);
             transform: translateX(-50%) translateY(var(--f-slider-tooltip-position-top));
-            background-color: var(--f-slider-fill-bar-background-color);
+            background-color: var(--f-slider-tooltip-color);
+            box-shadow: var(--f-slider-tooltip-box-shadow);
             border-radius: var(--f-slider-tooltip-border-radius);
             z-index: 3;
 
@@ -133,7 +134,7 @@
                 border-style: solid;
                 border-width: 0 var(--f-slider-tooltip-arrow-size) var(--f-slider-tooltip-arrow-size)
                     var(--f-slider-tooltip-arrow-size);
-                border-color: transparent transparent var(--f-slider-fill-bar-background-color) transparent;
+                border-color: transparent transparent var(--f-slider-tooltip-color) transparent;
             }
         }
     }
