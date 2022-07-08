@@ -1,8 +1,9 @@
 <template>
     <section class="gov-proposal-list" :aria-labelledby="labelId">
-        <h2 v-if="!windowMode" :id="labelId" class="dt-heading">
+        <!--        <h2 v-if="!windowMode" :id="labelId" class="dt-heading">
             Proposals <span class="f-records-count">({{ totalCount }})</span>
-        </h2>
+        </h2>-->
+
         <f-card class="account-transaction-list-dt" :off="windowMode">
             <template v-if="!proposalsError">
                 <f-data-table
