@@ -116,6 +116,7 @@
                         <f-error-messages :errors="timeInputErrors" errors-cont-id="sdf" />
                         <f-button type="sumbit" label="Create proposal" class="large" />
                     </div>
+                    <div class="govproposalsgeneratorform_fee">Proposal fee: {{ proposalFee }} FTM</div>
                 </div>
             </div>
         </fieldset>
@@ -140,6 +141,7 @@ export default {
             proposalNameErrors: [],
             proposalDescriptionErrors: [],
             timeInputErrors: [],
+            proposalFee: 100,
         };
     },
 
@@ -305,7 +307,13 @@ export default {
         }
     }
 
-    .infotext {
+    &_fee {
+        padding-top: 4px;
+        text-align: center;
+    }
+
+    .infotext,
+    &_fee {
         font-size: 0.9em;
         color: #9299a6;
     }
