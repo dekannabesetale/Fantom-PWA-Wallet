@@ -634,6 +634,25 @@ const appStructure = [
                                     },
                                 ],
                             },
+                            {
+                                id: 'gov-proposal-generator',
+                                _c: [
+                                    {
+                                        id: 'gov-proposal-creation-confirmation',
+                                        component: 'gov-proposal-creation-confirmation',
+                                        _c: [
+                                            {
+                                                id: 'gov-proposal-creation-transaction-success-message',
+                                                component: 'transaction-success-message',
+                                            },
+                                            {
+                                                id: 'gov-proposal-creation-transaction-reject-message',
+                                                component: 'transaction-reject-message',
+                                            },
+                                        ],
+                                    },
+                                ],
+                            },
                         ],
                     },
                 ],

@@ -13,8 +13,8 @@
             </f-tab>
 
             <f-tab title="Proposals generator">
-                <f-card>
-                    <gov-proposals-generator />
+                <f-card class="proposalgenerator_fcard">
+                    <gov-proposals-generator @reload-view="$emit('reload-view')" />
                 </f-card>
             </f-tab>
         </f-tabs>
@@ -45,3 +45,9 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+.proposalgenerator_fcard {
+    overflow: hidden;
+}
+</style>

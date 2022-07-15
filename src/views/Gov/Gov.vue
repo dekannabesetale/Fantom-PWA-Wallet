@@ -7,8 +7,8 @@
             <address-info-box />
 
             <main class="main">
-                <f-view-transition watch-route :views-structure="viewsStructure">
-                    <router-view></router-view>
+                <f-view-transition watch-route :views-structure="viewsStructure" :disabled="fViewTransitionDisabled">
+                    <router-view :key="reload + $route.fullPath" @reload-view="onReloadView"></router-view>
                 </f-view-transition>
             </main>
         </template>
@@ -27,6 +27,7 @@ import {
 import { eventBusMixin } from '@/mixins/event-bus.js';
 import FViewTransition from '@/components/core/FViewTransition/FViewTransition.vue';
 import { appStructureTree } from '@/app-structure.js';
+import { defer, getUniqueId } from '@/utils/index.js';
 
 export default {
     name: 'Gov',
@@ -34,6 +35,13 @@ export default {
     components: { FViewTransition, AddressInfoBox, FMessage },
 
     mixins: [eventBusMixin],
+
+    data() {
+        return {
+            reload: '',
+            fViewTransitionDisabled: false,
+        };
+    },
 
     computed: {
         ...mapGetters(['currentAccount']),
@@ -68,6 +76,17 @@ export default {
             this.$store.commit(DEACTIVATE_ACTIVE_ACCOUNT);
             this.$store.commit(SET_ACTIVE_ACCOUNT_BY_ADDRESS, _address);
             this.$store.commit(SET_ACTIVE_ACCOUNT_ADDRESS, _address);
+        },
+
+        onReloadView() {
+            this.fViewTransitionDisabled = true;
+            this.reload = getUniqueId();
+
+            console.log('ON REL');
+
+            defer(() => {
+                this.fViewTransitionDisabled = false;
+            }, 100);
         },
     },
 };

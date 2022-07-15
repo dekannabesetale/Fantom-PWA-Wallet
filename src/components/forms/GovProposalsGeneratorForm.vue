@@ -253,6 +253,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import '../../assets/scss/vars';
+
 .govproposalsgeneratorform {
     .form-body {
         display: flex;
@@ -321,6 +323,26 @@ export default {
     .inputsuffix {
         color: #9299a6;
         padding-inline-end: 8px;
+    }
+}
+
+@include media-max($bp-medium) {
+    .govproposalsgeneratorform {
+        .form-body {
+            flex-direction: column;
+        }
+    }
+}
+
+@include media-max($bp-small) {
+    .govproposalsgeneratorform {
+        &_timeinputs {
+            flex-direction: column;
+
+            .f-input {
+                margin-bottom: 0;
+            }
+        }
     }
 }
 </style>
